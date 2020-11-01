@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{aK7f:function(t,n,e){},gEGz:function(t,n,e){"use strict";e("aK7f")},iyQ6:function(t,n,e){"use strict";e.r(n);var l={metaInfo:{title:"Hello, world!"}},o=(e("gEGz"),e("KHd+")),u=Object(o.a)(l,(function(){var t=this.$createElement;return(this._self._c||t)("Layout")}),[],!1,null,null,null);n.default=u.exports}}]);
