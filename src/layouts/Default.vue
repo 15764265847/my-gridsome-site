@@ -9,7 +9,25 @@
         <g-link class="nav__link" to="/about/">About</g-link>
       </nav>
     </header>
-    <slot/>
+    <section class="main-content">
+        <el-row>
+            <el-col :span="6" style="padding-right:10px">
+                <el-card shadow="never">
+                  <el-menu :default-active="active" @select="onSelect">
+                      <el-menu-item v-for="item in constantRouterMap"
+                          :key="item.path" :index="item.path">
+                          <i :class="item.meta.icon"></i>
+                          <span slot="title">{{item.meta.title}}</span>
+                      </el-menu-item>
+                  </el-menu>
+              </el-card>
+            </el-col>
+            <el-col :span="18" style="padding-left:10px">
+                <!-- <app-main></app-main> -->
+                <slot/>
+            </el-col>
+        </el-row>
+    </section>
   </div>
 </template>
 
@@ -20,6 +38,66 @@ query {
   }
 }
 </static-query>
+
+<script>
+import AppMain from '@/components/AppMain.vue';
+
+export default {
+  components: {
+    AppMain
+  },
+  data() {
+    return {
+      constantRouterMap: [
+        {
+            path: '/new',
+            meta: {
+                type: "user",
+                icon: 'el-icon-star-off',
+                title: '最新动态'
+            }
+        },
+        {
+            path: '/social',
+            meta: {
+                type: "user",
+                icon: 'el-icon-mobile-phone',
+                title: '社交圈'
+            },
+        },
+        {
+            path: '/blog',
+            meta: {
+                type: "user",
+                icon: 'el-icon-edit-outline',
+                title: '博客列表'
+            }
+        },
+        {
+            path: '/project',
+            meta: {
+                type: "user",
+                icon: 'el-icon-service',
+                title: '开源项目'
+            },
+        },
+      ],
+      active: "",
+      parentUrl: "",
+      menuList: []
+    }
+  },
+  mounted() {
+    let arr = this.$route.path.split("/")
+    this.active = "/" + arr[1] + "/" + arr[2]
+  },
+  methods: {
+      onSelect(index) {
+          this.$router.push(index)
+      }
+  }
+}
+</script>
 
 <style>
 body {
