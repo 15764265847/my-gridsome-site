@@ -14,11 +14,12 @@
             <el-col :span="6" style="padding-right:10px">
                 <el-card shadow="never">
                   <el-menu :default-active="active" @select="onSelect">
-                      <el-menu-item v-for="item in constantRouterMap"
-                          :key="item.path" :index="item.path">
+                      <g-link v-for="item in constantRouterMap" :key="item.path" :to="item.path">{{ item.meta.title }}<br /></g-link>
+                      <!-- <el-menu-item v-for="item in constantRouterMap"
+                           :index="item.path">
                           <i :class="item.meta.icon"></i>
                           <span slot="title">{{item.meta.title}}</span>
-                      </el-menu-item>
+                      </el-menu-item> -->
                   </el-menu>
               </el-card>
             </el-col>
